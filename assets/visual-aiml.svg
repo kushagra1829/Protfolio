@@ -14,7 +14,7 @@
 
   <!-- Big Title -->
   <text x="30" y="160" fill="#F2EFE6" font-family="'Archivo Black', sans-serif" font-size="36">AI / MACHINE LEARNING</text>
-  <text x="30" y="200" fill="#8A9BFF" font-family="'JetBrains Mono', monospace" font-size="15">Deep Learning & Neural Architectures</text>
+  <text x="30" y="200" fill="#8A9BFF" font-family="'JetBrains Mono', monospace" font-size="15">Deep Learning &amp; Neural Architectures</text>
 
   <!-- Graphic Accents -->
   <line x1="30" y1="240" x2="570" y2="240" stroke="#0B24FF" stroke-width="2"/>

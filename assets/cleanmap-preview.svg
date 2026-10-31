@@ -41,7 +41,7 @@
     </g>
   </g>
 
-  <!-- Right: Telemetry & Leaderboard -->
+  <!-- Right: Telemetry &amp; Leaderboard -->
   <g transform="translate(440, 80)">
     <!-- Stat card 1 -->
     <rect width="240" height="95" fill="#FFFFFF" stroke="#000000" stroke-width="2" filter="url(#bm-shadow)"/>

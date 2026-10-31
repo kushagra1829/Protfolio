@@ -13,11 +13,11 @@
     <!-- Photo area -->
     <rect x="55" y="55" width="330" height="320" fill="#0B24FF" stroke="#000000" stroke-width="2"/>
     
-    <!-- Photo scene: Winter / North Sweden tech desk with code editor & snowy window -->
+    <!-- Photo scene: Winter / North Sweden tech desk with code editor &amp; snowy window -->
     <g transform="translate(55, 55)">
       <rect width="330" height="320" fill="#0F172A"/>
       
-      <!-- Window view with snow trees & northern light -->
+      <!-- Window view with snow trees &amp; northern light -->
       <path d="M 20 20 L 150 20 L 150 160 L 20 160 Z" fill="#0284C7" stroke="#38BDF8" stroke-width="2"/>
       <path d="M 20 50 Q 85 25 150 55" fill="none" stroke="#4ADE80" stroke-width="3" opacity="0.6"/>
       <!-- Snow pines -->

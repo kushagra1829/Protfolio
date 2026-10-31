@@ -32,7 +32,7 @@
     <rect x="220" y="140" width="105" height="22" fill="#38BDF8" stroke="#000"/>
     <text x="225" y="155" fill="#000" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="bold">IR BLINK DROWSINESS</text>
 
-    <!-- Microcontroller hub & GSM Distress Module -->
+    <!-- Microcontroller hub &amp; GSM Distress Module -->
     <rect x="150" y="275" width="130" height="45" fill="#0B24FF" stroke="#000" stroke-width="2"/>
     <text x="160" y="295" fill="#FFF" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="bold">GSM / GPS DISPATCH</text>
     <text x="160" y="310" fill="#FFC800" font-family="'JetBrains Mono', monospace" font-size="8">LAT/LONG SMS ALERT</text>
@@ -43,7 +43,7 @@
     <text x="45" y="195" fill="#C1272D" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="bold">ALARM CHIME</text>
   </g>
 
-  <!-- Right: Verification & Patent Information -->
+  <!-- Right: Verification &amp; Patent Information -->
   <g transform="translate(460, 80)">
     <rect width="220" height="150" fill="#FFFFFF" stroke="#000000" stroke-width="2" filter="url(#ar-shadow)"/>
     <text x="15" y="25" fill="#6B7280" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="bold">INTELLECTUAL PROPERTY</text>
