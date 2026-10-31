@@ -103,7 +103,7 @@ const CONTENT = {
       ],
       links: {
         github: "https://github.com/kushagra1829/cleanmap",
-        demo: "https://cleanmap.kushagra.dev"
+        demo: "https://clean-map-rho.vercel.app/"
       }
     },
     {
@@ -266,7 +266,7 @@ GROUP BY id, geom
 HAVING COUNT(reports.id) >= 3;`,
         links: {
           github: "https://github.com/kushagra1829/cleanmap",
-          demo: "https://cleanmap.kushagra.dev"
+          demo: "https://clean-map-rho.vercel.app/"
         }
       }
     },
