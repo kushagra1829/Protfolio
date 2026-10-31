@@ -102,7 +102,7 @@ const CONTENT = {
         { label: "Resolution Ratio", value: "80%" }
       ],
       links: {
-        github: "https://github.com/kushagra-anand/cleanmap",
+        github: "https://github.com/kushagra1829/cleanmap",
         demo: "https://cleanmap.kushagra.dev"
       }
     },
@@ -125,7 +125,7 @@ const CONTENT = {
         { label: "Auth Isolation", value: "100% RLS" }
       ],
       links: {
-        github: "https://github.com/kushagra-anand/seefaa",
+        github: "https://github.com/kushagra1829/seefaa",
         demo: "https://seefaa.lovable.app"
       }
     },
@@ -148,7 +148,7 @@ const CONTENT = {
         { label: "Execution Modes", value: "2 Paths" }
       ],
       links: {
-        github: "https://github.com/kushagra-anand/DNASequenceSimilarity"
+        github: "https://github.com/kushagra1829/DNASequenceSimilarity"
       }
     },
     {
@@ -170,7 +170,7 @@ const CONTENT = {
         { label: "Mold Risk Barrier", value: "12% Max" }
       ],
       links: {
-        github: "https://github.com/kushagra-anand/recycling-pant-machine"
+        github: "https://github.com/kushagra1829/recycling-pant-machine"
       }
     }
   ],
@@ -219,7 +219,7 @@ void handleCollisionISR() {
   }
 }`,
         links: {
-          github: "https://github.com/kushagra-anand/alert-ride-helmet",
+          github: "https://github.com/kushagra1829/alert-ride-helmet",
           patent: "Application #2026/CHENNAI (Status: Filed)"
         }
       }
@@ -265,7 +265,7 @@ WHERE ST_DWithin(geom, ST_MakePoint($1, $2)::geography, 5000)
 GROUP BY id, geom
 HAVING COUNT(reports.id) >= 3;`,
         links: {
-          github: "https://github.com/kushagra-anand/cleanmap",
+          github: "https://github.com/kushagra1829/cleanmap",
           demo: "https://cleanmap.kushagra.dev"
         }
       }
@@ -314,7 +314,7 @@ double computeJaccardSimilarity(const std::string& seqA, const std::string& seqB
   }
 }`,
         links: {
-          github: "https://github.com/kushagra-anand/DNASequenceSimilarity"
+          github: "https://github.com/kushagra1829/DNASequenceSimilarity"
         }
       }
     },
@@ -358,7 +358,7 @@ TO authenticated
 USING (auth.uid() = user_id)
 WITH CHECK (auth.uid() = user_id);`,
         links: {
-          github: "https://github.com/kushagra-anand/seefaa",
+          github: "https://github.com/kushagra1829/seefaa",
           demo: "https://seefaa.lovable.app"
         }
       }
@@ -406,7 +406,7 @@ DepositClass classifyItem(SensorSnapshot s) {
   return CONTAMINANT_REJECT;
 }`,
         links: {
-          github: "https://github.com/kushagra-anand/recycling-pant-machine"
+          github: "https://github.com/kushagra1829/recycling-pant-machine"
         }
       }
     }
@@ -489,9 +489,9 @@ DepositClass classifyItem(SensorSnapshot s) {
     body: "Hi Kushagra,\n\nI was exploring your portfolio and followed your journey from SRM Chennai to Umeå. I'd love to chat about your projects and discuss...",
     locationNotice: "CURRENT STATION: UMEÅ UNIVERSITY, SWEDEN (LAT 63.8258° N)",
     socials: [
-      { name: "LinkedIn", url: "https://www.linkedin.com/in/kushagra-anand", handle: "in/kushagra-anand" },
-      { name: "GitHub", url: "https://github.com/kushagra-anand", handle: "github.com/kushagra-anand" },
-      { name: "Instagram", url: "https://instagram.com/kushagra_anand", handle: "@kushagra_anand" },
+      { name: "LinkedIn", url: "https://www.linkedin.com/in/kushagra-anand-23155b435/", handle: "in/kushagra-anand-23155b435" },
+      { name: "GitHub", url: "https://github.com/kushagra1829", handle: "github.com/kushagra1829" },
+      { name: "Instagram", url: "https://instagram.com/kushagra.anand", handle: "@kushagra.anand" },
       { name: "Email", url: "mailto:anandkushagra1@gmail.com?subject=Hello%20Kushagra%20%2F%2F%20Chennai%20%E2%9E%94%20Ume%C3%A5%20Connection", handle: "anandkushagra1@gmail.com" }
     ]
   },

@@ -15,7 +15,7 @@ This portfolio is **100% static** and designed to deploy free on **Cloudflare Pa
    git init
    git add .
    git commit -m "feat: initial commit of personal portfolio"
-   git remote add origin https://github.com/kushagra-anand/portfolio.git
+   git remote add origin https://github.com/kushagra1829/Protfolio.git
    git push -u origin main
    ```
 2. Log in to [Cloudflare Dashboard](https://dash.cloudflare.com) ➔ **Workers & Pages** ➔ **Create application** ➔ **Pages** ➔ **Connect to Git**.
