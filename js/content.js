@@ -491,7 +491,7 @@ DepositClass classifyItem(SensorSnapshot s) {
     socials: [
       { name: "LinkedIn", url: "https://www.linkedin.com/in/kushagra-anand-23155b435/", handle: "in/kushagra-anand-23155b435" },
       { name: "GitHub", url: "https://github.com/kushagra1829", handle: "github.com/kushagra1829" },
-      { name: "Instagram", url: "https://instagram.com/kushagra.anand", handle: "@kushagra.anand" },
+      { name: "Instagram", url: "https://www.instagram.com/kushagra.aanand/", handle: "@kushagra.aanand" },
       { name: "Email", url: "mailto:anandkushagra1@gmail.com?subject=Hello%20Kushagra%20%2F%2F%20Chennai%20%E2%9E%94%20Ume%C3%A5%20Connection", handle: "anandkushagra1@gmail.com" }
     ]
   },
