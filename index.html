@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kushagra Anand — Chennai ➔ Umeå // Creative Developer & Systems Engineer</title>
+  <meta name="description" content="Personal portfolio of Kushagra Anand. Computer Science Engineer transitioning from SRM Chennai to Umeå University, Sweden. High-performance C++, Human-Centered AI, and Robotics.">
+  <meta name="theme-color" content="#05081E">
+
+  <!-- Favicon SVG -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%230B24FF'/><text x='50' y='65' fill='%23FFC800' font-family='monospace' font-weight='900' font-size='42' text-anchor='middle'>KA</text></svg>">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Caveat:wght@600;700&family=JetBrains+Mono:wght@400;600;700;800;900&family=Permanent+Marker&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'royal-blue': '#0B24FF',
+            'navy-glow': '#00008B',
+            'deep-navy': '#05081E',
+            'cream-paper': '#F2EFE6',
+            'cream-light': '#FAF8F2',
+            'accent-yellow': '#FFC800',
+            'accent-red': '#C1272D',
+            'accent-green': '#27C93F',
+            'periwinkle': '#8A9BFF'
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['"Archivo Black"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+            handwriting: ['"Caveat"', 'cursive'],
+            marker: ['"Permanent Marker"', 'cursive']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+  <!-- GSAP & ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- Lenis Smooth Scroll -->
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-[#05081E] text-black selection:bg-accent-yellow selection:text-black">
+
+  <!-- =========================================================================
+       CUSTOM CURSOR
+       ========================================================================= -->
+  <div id="custom-cursor" aria-hidden="true">
+    <div class="cursor-dot"></div>
+    <div class="cursor-label" id="cursor-label">EXPLORE</div>
+  </div>
+
+  <!-- =========================================================================
+       PRELOADER (Full-Screen Animated)
+       ========================================================================= -->
+  <div id="preloader" role="dialog" aria-modal="true" aria-label="Loading portfolio experience">
+    <div class="flex justify-between items-center w-full">
+      <div class="flex items-center gap-3">
+        <span class="w-3.5 h-3.5 bg-accent-yellow rounded-full animate-ping"></span>
+        <span class="font-mono text-xs md:text-sm tracking-wider uppercase font-bold text-cream-paper">
+          KUSHAGRA ANAND // TRANSIT SYSTEM
+        </span>
+      </div>
+      <button id="skip-preloader-btn" class="font-mono text-xs tracking-widest font-extrabold uppercase px-4 py-1.5 bg-black text-accent-yellow border-2 border-accent-yellow hover:bg-white hover:text-black transition-colors" data-cursor="SKIP">
+        SKIP ➔
+      </button>
+    </div>
+
+    <div class="my-auto max-w-4xl">
+      <p class="font-mono text-xs md:text-sm text-periwinkle font-semibold tracking-widest mb-3">
+        LAT 13.0827° N ➔ 63.8258° N
+      </p>
+      <h1 class="font-handwriting text-5xl md:text-8xl text-cream-paper leading-tight">
+        "Closing the gap between reporting a problem and solving it."
+      </h1>
+      <p class="font-mono text-xs md:text-sm text-accent-yellow mt-4 font-bold tracking-wider">
+        SRM INSTITUTE OF SCIENCE &amp; TECHNOLOGY ➔ UMEÅ UNIVERSITY, SWEDEN
+      </p>
+    </div>
+
+    <div class="w-full">
+      <div class="flex justify-between items-end mb-2">
+        <span class="font-mono text-xs text-cream-paper font-semibold">BOOTING ROUTE KERNEL...</span>
+        <span id="preloader-counter" class="font-display text-4xl md:text-6xl text-accent-yellow">0%</span>
+      </div>
+      <div class="w-full h-3 bg-black border-2 border-white/40 overflow-hidden rounded-sm">
+        <div id="preloader-bar" class="h-full bg-accent-yellow w-0 transition-all duration-75"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       FIXED TOP CHROME BAR (3 Zones: Identity, Live Rotating Ticker, Progress)
+       ========================================================================= -->
+  <header class="fixed top-0 left-0 right-0 z-50 px-3 md:px-6 py-2.5 bg-[#05081E]/90 backdrop-blur-md border-b-2 border-black flex items-center justify-between gap-4 text-cream-paper select-none">
+    <!-- Left Zone: Transit Identity -->
+    <a href="#hero" class="flex items-center gap-2 group" data-cursor="START">
+      <div class="w-3 h-3 bg-accent-yellow border border-black shadow-sm group-hover:bg-white transition-colors"></div>
+      <span class="font-mono text-xs md:text-sm font-extrabold tracking-wider text-cream-paper group-hover:text-accent-yellow transition-colors">
+        KUSHAGRA <span class="text-accent-yellow">CHENNAI ➔ UMEÅ</span>
+      </span>
+    </a>
+
+    <!-- Center Zone: Rotating One-Liners -->
+    <div class="hidden lg:flex items-center gap-2 overflow-hidden max-w-xl text-center">
+      <span class="font-mono text-[10px] text-accent-yellow font-black px-1.5 py-0.5 bg-black border border-accent-yellow">
+        SYS-LOG
+      </span>
+      <div id="top-bar-rotator" class="font-mono text-xs text-slate-300 font-semibold truncate transition-opacity duration-300">
+        LAT 13.08° N (CHENNAI) ➔ 63.82° N (UMEÅ) // TRANSIT ACTIVE
+      </div>
+    </div>
+
+    <!-- Right Zone: Live Scroll Progress -->
+    <div class="flex items-center gap-3">
+      <div class="hidden sm:flex items-center gap-2">
+        <span class="font-mono text-[11px] font-bold text-periwinkle tracking-wider">SEEN:</span>
+        <span id="scroll-percentage" class="font-mono text-xs font-black text-accent-yellow min-w-[36px]">0%</span>
+      </div>
+      <div class="w-16 sm:w-24 h-2.5 bg-black border border-periwinkle/50 overflow-hidden rounded-full">
+        <div id="scroll-progress-bar" class="h-full bg-royal-blue w-0 transition-all duration-75"></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       FIXED BOTTOM PILL NAVIGATION (Centered Brutalist Pill + Travel Animation)
+       ========================================================================= -->
+  <nav class="fixed bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-50 max-w-[95vw]" aria-label="Section Navigation">
+    <div class="flex items-center gap-1 sm:gap-2 p-1.5 sm:p-2 bg-cream-paper border-brutal shadow-brutal-lg rounded-full">
+      <a href="#hero" class="nav-pill active px-3 sm:px-4 py-1.5 rounded-full font-mono text-[11px] sm:text-xs font-black uppercase text-black hover:bg-black hover:text-white transition-all" data-section="hero" data-cursor="VISIT">
+        Home
+      </a>
+      <a href="#origin" class="nav-pill px-3 sm:px-4 py-1.5 rounded-full font-mono text-[11px] sm:text-xs font-black uppercase text-black hover:bg-black hover:text-white transition-all" data-section="origin" data-cursor="VISIT">
+        Origin
+      </a>
+      <a href="#projects" class="nav-pill px-3 sm:px-4 py-1.5 rounded-full font-mono text-[11px] sm:text-xs font-black uppercase text-black hover:bg-black hover:text-white transition-all" data-section="projects" data-cursor="VISIT">
+        Projects
+      </a>
+      <a href="#best-work" class="nav-pill px-3 sm:px-4 py-1.5 rounded-full font-mono text-[11px] sm:text-xs font-black uppercase text-black hover:bg-black hover:text-white transition-all" data-section="best-work" data-cursor="VISIT">
+        Route
+      </a>
+      <a href="#visuals" class="nav-pill px-3 sm:px-4 py-1.5 rounded-full font-mono text-[11px] sm:text-xs font-black uppercase text-black hover:bg-black hover:text-white transition-all" data-section="visuals" data-cursor="VISIT">
+        Visuals
+      </a>
+      <a href="#contact" class="nav-pill px-3 sm:px-4 py-1.5 rounded-full font-mono text-[11px] sm:text-xs font-black uppercase text-black hover:bg-black hover:text-white transition-all" data-section="contact" data-cursor="VISIT">
+        Contact
+      </a>
+    </div>
+  </nav>
+
+  <!-- =========================================================================
+       AUDIO / SOUND TOGGLE (Bottom Right)
+       ========================================================================= -->
+  <button id="sound-toggle-btn" class="fixed bottom-6 right-4 sm:right-8 z-40 w-11 h-11 bg-cream-paper border-brutal shadow-brutal rounded-full flex items-center justify-center hover-press group" aria-label="Toggle sound telemetry" data-cursor="AUDIO">
+    <span id="sound-icon-muted" class="text-black font-mono font-bold text-xs group-hover:scale-110 transition-transform">🔇</span>
+    <span id="sound-icon-active" class="hidden text-royal-blue font-mono font-bold text-xs group-hover:scale-110 transition-transform">🔊</span>
+  </button>
+
+  <!-- =========================================================================
+       TRAVEL TRANSITION OVERLAY
+       ========================================================================= -->
+  <div id="travel-overlay" aria-hidden="true">
+    <div class="text-center p-8 bg-cream-paper border-brutal shadow-brutal-xl rounded-lg max-w-md">
+      <div class="font-mono text-xs font-black tracking-widest text-royal-blue uppercase mb-2">TRANSIT IN PROGRESS</div>
+      <h3 id="travel-target-label" class="font-display text-3xl text-black uppercase mb-4">TRANSFERRING...</h3>
+      <div class="w-full h-3 bg-black border-2 border-black overflow-hidden rounded-full">
+        <div id="travel-progress-bar" class="h-full bg-accent-yellow w-0"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       SECTION 01: HERO — STARTING POINT (Chennai ➔ Umeå Departure)
+       ========================================================================= -->
+  <section id="hero" class="relative min-h-screen bg-blueprint-grid flex flex-col justify-between pt-24 pb-20 px-4 sm:px-8 lg:px-16 overflow-hidden">
+    <!-- Deep Navy Glow Gradient Background -->
+    <div class="absolute inset-0 bg-gradient-to-b from-navy-glow/40 via-deep-navy to-[#05081E] pointer-events-none"></div>
+    <div class="absolute -top-32 -left-32 w-96 h-96 bg-royal-blue/30 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute top-1/2 -right-32 w-96 h-96 bg-periwinkle/20 rounded-full blur-3xl pointer-events-none"></div>
+
+    <!-- Main Hero Container -->
+    <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center my-auto">
+      
+      <!-- Left Column: Started as → Became → Currently -->
+      <div class="lg:col-span-3 flex flex-col gap-5 order-2 lg:order-1">
+        <div class="bg-cream-paper border-brutal shadow-brutal p-5 tilt-left-1">
+          <div class="font-mono text-[10px] font-black uppercase text-royal-blue tracking-wider mb-1">WAYPOINT 01</div>
+          <div class="font-mono text-xs font-bold text-gray-500 uppercase">Started as</div>
+          <div class="font-sans font-extrabold text-black text-sm md:text-base">CS student @ SRM Chennai</div>
+        </div>
+
+        <div class="bg-cream-paper border-brutal shadow-brutal p-5">
+          <div class="font-mono text-[10px] font-black uppercase text-royal-blue tracking-wider mb-1">WAYPOINT 02</div>
+          <div class="font-mono text-xs font-bold text-gray-500 uppercase">Became</div>
+          <div class="font-sans font-extrabold text-black text-sm md:text-base">Full-stack &amp; systems builder</div>
+        </div>
+
+        <div class="bg-accent-yellow border-brutal shadow-brutal p-5 tilt-right-1">
+          <div class="font-mono text-[10px] font-black uppercase text-black tracking-wider mb-1">CURRENT STOP</div>
+          <div class="font-mono text-xs font-bold text-gray-800 uppercase">Currently</div>
+          <div class="font-sans font-extrabold text-black text-sm md:text-base">Human-Centered AI &amp; Robotics @ Umeå</div>
+        </div>
+      </div>
+
+      <!-- Center Column: Giant Oversized Handwritten Name + Portrait Graphic -->
+      <div class="lg:col-span-6 flex flex-col items-center text-center order-1 lg:order-2">
+        <!-- Prominent Stamp Sticker -->
+        <div class="mb-3 inline-block bg-accent-yellow border-brutal shadow-brutal px-5 py-2 tilt-left-2 z-20" data-cursor="ROUTE">
+          <span class="font-mono text-xs sm:text-sm font-black tracking-widest text-black uppercase">
+            SRM '28 / UMEÅ, SWEDEN
+          </span>
+        </div>
+
+        <!-- Giant Handwritten Title -->
+        <div class="relative w-full">
+          <h1 class="font-handwriting text-7xl sm:text-9xl md:text-[11rem] text-cream-paper tracking-normal font-bold leading-none select-none drop-shadow-lg">
+            kushagra
+          </h1>
+          <div class="font-mono text-sm sm:text-lg font-black tracking-widest text-accent-yellow uppercase -mt-2 md:-mt-4">
+            KUSHAGRA ANAND // SYSTEMS &amp; AI
+          </div>
+        </div>
+
+        <!-- Portrait Silhouette Visual with Route Aura -->
+        <div class="relative mt-4 w-64 sm:w-80 md:w-96 aspect-square bg-[#060919] border-brutal-blue shadow-brutal-yellow rounded-lg overflow-hidden group" data-cursor="FLIGHT 6,700KM">
+          <img src="assets/portrait-silhouette.svg" alt="Kushagra Anand Developer Silhouette and Route" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          
+          <!-- Bottom badge on silhouette -->
+          <div class="absolute bottom-3 left-3 right-3 bg-black/90 border border-accent-yellow p-2 flex items-center justify-between">
+            <span class="font-mono text-[10px] font-bold text-accent-yellow">FLIGHT LAT: 13.08°N ➔ 63.82°N</span>
+            <span class="font-mono text-[9px] font-extrabold text-green-400">● 6,700 KM</span>
+          </div>
+        </div>
+
+        <p class="font-mono text-xs sm:text-sm text-slate-300 font-semibold max-w-lg mt-5">
+          Building low-latency systems &amp; human-centered intelligent tools from Chennai to the Arctic Circle.
+        </p>
+      </div>
+
+      <!-- Right Column: Top Right Flight Log / Coding Hours Chart -->
+      <div class="lg:col-span-3 flex flex-col gap-5 order-3">
+        <!-- Static Route Flight / Runtime Chart -->
+        <div class="bg-cream-paper border-brutal shadow-brutal p-5 tilt-right-2">
+          <div class="flex items-center justify-between border-b-2 border-black pb-2 mb-3">
+            <span class="font-mono text-[10px] font-black uppercase text-black">LOG: CHENNAI ➔ UMEÅ</span>
+            <span class="w-2.5 h-2.5 bg-green-500 rounded-full"></span>
+          </div>
+          <div class="font-display text-xl text-black">09:00 ➔ 02:00</div>
+          <div class="font-mono text-[11px] font-bold text-royal-blue mt-1">PEAK CODE RUNTIME</div>
+
+          <!-- Static flight path representation -->
+          <div class="mt-4 p-3 bg-[#05081E] border border-black text-periwinkle font-mono text-[10px]">
+            <div class="flex justify-between text-white font-bold">
+              <span>MAA (CHENNAI)</span>
+              <span>➔</span>
+              <span>UME (UMEÅ)</span>
+            </div>
+            <div class="w-full bg-slate-800 h-1.5 mt-2 rounded-full overflow-hidden">
+              <div class="bg-accent-yellow w-3/4 h-full"></div>
+            </div>
+            <div class="mt-2 text-slate-400">STATUS: NOMINAL ENGINE LOAD</div>
+          </div>
+        </div>
+
+        <!-- Brutalist Tape Note -->
+        <div class="relative bg-white border-brutal shadow-brutal p-4">
+          <div class="tape-strip -top-3.5 left-1/3 w-28 tilt-left-1"></div>
+          <p class="font-handwriting text-2xl text-black leading-snug">
+            "Software that solves physical, non-negotiable emergencies."
+          </p>
+          <div class="font-mono text-[10px] text-gray-500 font-bold mt-2 text-right">— KUSHAGRA A.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero Bottom Action Row: GO ON, SCROLL DOWN Button -->
+    <div class="relative z-10 flex flex-col sm:flex-row items-center justify-between pt-6 border-t border-slate-800 gap-4">
+      <div class="font-mono text-xs text-slate-400 font-semibold">
+        SRM UNIVERSITY '28 // UMEÅ HCAI EXCHANGE // 2026
+      </div>
+
+      <a href="#origin" class="flex items-center gap-3 bg-accent-yellow text-black px-6 py-3 border-brutal shadow-brutal font-mono text-xs font-black uppercase tracking-wider hover-press" data-cursor="SCROLL">
+        <span>GO ON, SCROLL DOWN</span>
+        <span class="text-base animate-bounce">↓</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       SECTION 02: ORIGIN — THE JOURNEY SO FAR (The Open Book & Spotlight)
+       ========================================================================= -->
+  <section id="origin" class="relative min-h-screen bg-black py-24 px-4 sm:px-8 lg:px-16 flex flex-col justify-center border-t-4 border-black">
+    <!-- Section Identifier Stamp -->
+    <div class="max-w-7xl mx-auto w-full mb-8 flex flex-wrap items-center justify-between gap-4">
+      <div class="inline-flex items-center gap-3">
+        <span class="px-3 py-1 bg-royal-blue text-white font-mono text-xs font-black tracking-widest border-2 border-white uppercase">
+          SECTION 02 // LOGBOOK
+        </span>
+        <span class="font-mono text-xs text-accent-yellow font-bold uppercase tracking-widest">
+          ORIGIN &amp; MILESTONES
+        </span>
+      </div>
+      <div class="font-mono text-xs text-slate-400">
+        CURSOR SPOTLIGHT ACTIVE: HOVER TO ILLUMINATE
+      </div>
+    </div>
+
+    <!-- The Open Book Container (Spotlight Follows Mouse) -->
+    <div id="origin-book" class="max-w-7xl mx-auto w-full bg-cream-paper border-brutal shadow-brutal-xl rounded-md overflow-hidden relative book-spotlight-layer" data-cursor="SPOTLIGHT">
+      <!-- Book spine line down the middle for desktop -->
+      <div class="hidden lg:block absolute top-0 bottom-0 left-1/2 w-1 bg-black/15 -translate-x-1/2 z-20 pointer-events-none"></div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 divide-y-2 lg:divide-y-0 lg:divide-x-2 divide-black">
+        
+        <!-- Book Left Page: Philosophy, Hustle Stops, 3 Verified Stat Boxes -->
+        <div class="p-6 sm:p-10 lg:p-12 flex flex-col justify-between bg-paper-grid relative">
+          <!-- Page Tape Strip -->
+          <div class="tape-strip -top-3 left-10 w-32 tilt-left-2"></div>
+
+          <div>
+            <div class="flex items-center justify-between border-b-2 border-black pb-3 mb-6">
+              <span class="font-mono text-xs font-black uppercase text-black">PAGE 01 // CORE PHILOSOPHY</span>
+              <span class="font-mono text-xs font-bold text-royal-blue">LAT 13.0827° N</span>
+            </div>
+
+            <!-- Big Philosophy Statement -->
+            <p class="font-handwriting text-3xl sm:text-4xl text-black leading-snug font-bold mb-6">
+              "I build things that close the gap between reporting a problem and solving it."
+            </p>
+
+            <p class="font-sans text-sm text-gray-800 leading-relaxed font-medium mb-8">
+              Whether deploying geospatial waste dispatch for civic volunteers, cutting latency on safety helmets during sudden impact, or squeezing cache performance out of C++ algorithms, I treat code as a direct mechanism for real-world impact.
+            </p>
+
+            <!-- Places Hustled At -->
+            <div class="mb-8">
+              <div class="font-mono text-xs font-black uppercase tracking-wider text-black mb-3 border-b border-black pb-1">
+                PLACES I'VE HUSTLED AT:
+              </div>
+              <div class="space-y-3">
+                <div class="bg-white border-brutal-sm p-3 shadow-brutal-sm">
+                  <div class="flex justify-between items-start">
+                    <span class="font-sans font-bold text-sm text-black">Axis Bank</span>
+                    <span class="font-mono text-[10px] bg-royal-blue text-white px-2 py-0.5 font-bold">Jun – Jul 2026</span>
+                  </div>
+                  <div class="font-mono text-xs text-royal-blue font-bold">Backend Intern</div>
+                  <div class="font-sans text-xs text-gray-600 mt-1">Enterprise data ingestion &amp; resilient distributed backend services.</div>
+                </div>
+
+                <div class="bg-white border-brutal-sm p-3 shadow-brutal-sm">
+                  <div class="flex justify-between items-start">
+                    <span class="font-sans font-bold text-sm text-black">SRM IST Chennai</span>
+                    <span class="font-mono text-[10px] bg-black text-accent-yellow px-2 py-0.5 font-bold">2024 – 2028</span>
+                  </div>
+                  <div class="font-mono text-xs text-black font-bold">B.Tech Computer Science Engineering</div>
+                  <div class="font-sans text-xs text-gray-600 mt-1">Department Top Tier, competitive programming, and hardware innovation labs.</div>
+                </div>
+
+                <div class="bg-accent-yellow/20 border-brutal-sm p-3 shadow-brutal-sm">
+                  <div class="flex justify-between items-start">
+                    <span class="font-sans font-bold text-sm text-black">Umeå University, Sweden</span>
+                    <span class="font-mono text-[10px] bg-royal-blue text-white px-2 py-0.5 font-bold">Autumn 2026</span>
+                  </div>
+                  <div class="font-mono text-xs text-royal-blue font-bold">International Exchange Scholar</div>
+                  <div class="font-sans text-xs text-gray-700 mt-1">Human-Centered AI, Intelligent Robotics &amp; Performance Programming.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3 Verified Stat Boxes (Only real, verified data) -->
+          <div class="grid grid-cols-3 gap-2 sm:gap-3 pt-4 border-t-2 border-black">
+            <div class="bg-white border-brutal-sm p-2 sm:p-3 text-center shadow-brutal-sm">
+              <div class="font-display text-2xl sm:text-3xl text-royal-blue">9.34</div>
+              <div class="font-mono text-[9px] sm:text-[10px] font-black uppercase text-black mt-1">ACADEMIC GPA</div>
+              <div class="font-sans text-[8px] sm:text-[9px] text-gray-500 mt-0.5">SRM IST</div>
+            </div>
+
+            <div class="bg-white border-brutal-sm p-2 sm:p-3 text-center shadow-brutal-sm">
+              <div class="font-display text-2xl sm:text-3xl text-accent-red">1</div>
+              <div class="font-mono text-[9px] sm:text-[10px] font-black uppercase text-black mt-1">PATENT FILED</div>
+              <div class="font-sans text-[8px] sm:text-[9px] text-gray-500 mt-0.5">Alert Ride</div>
+            </div>
+
+            <div class="bg-accent-yellow border-brutal-sm p-2 sm:p-3 text-center shadow-brutal-sm">
+              <div class="font-display text-2xl sm:text-3xl text-black">3</div>
+              <div class="font-mono text-[9px] sm:text-[10px] font-black uppercase text-black mt-1">HACKATHONS</div>
+              <div class="font-sans text-[8px] sm:text-[9px] text-black font-semibold mt-0.5">CleanMap Wins</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Book Right Page: Origin Story in Giant Condensed Sans + Polaroid Photo -->
+        <div class="p-6 sm:p-10 lg:p-12 flex flex-col justify-between bg-cream-paper relative">
+          <!-- Page Tape Strip -->
+          <div class="tape-strip -top-3 right-10 w-32 tilt-right-1"></div>
+
+          <div>
+            <div class="flex items-center justify-between border-b-2 border-black pb-3 mb-6">
+              <span class="font-mono text-xs font-black uppercase text-black">PAGE 02 // CHENNAI ➔ UMEÅ FLIGHT LOG</span>
+              <span class="font-mono text-xs font-bold text-accent-red">LAT 63.8258° N</span>
+            </div>
+
+            <!-- Big Shouted Statement / Origin Story in Condensed Typography -->
+            <div class="font-display text-2xl sm:text-3xl md:text-4xl text-black uppercase leading-tight tracking-tight mb-6">
+              I BEGAN CODING BECAUSE PHYSICAL EMERGENCIES CANNOT WAIT FOR BUREAUCRACY.
+            </div>
+
+            <p class="font-sans text-sm sm:text-base text-gray-800 leading-relaxed font-medium mb-6">
+              In Chennai, watching illegal waste dumps pile up on neighborhood corners sparked the idea for CleanMap. Seeing late-night motorcycle accidents spurred the patent-filed Alert Ride Helmet.
+            </p>
+
+            <p class="font-sans text-sm sm:text-base text-gray-800 leading-relaxed font-medium mb-8">
+              Packing my bags for Umeå University in northern Sweden tested everything under sub-zero conditions: diving deep into low-level C++ performance tuning, reverse vending robotics, and human-centered AI that genuinely respects human agency.
+            </p>
+          </div>
+
+          <!-- Polaroid Photo Visual with Tape & Handwritten Note -->
+          <div class="w-full flex justify-center py-4">
+            <div class="w-64 sm:w-72 aspect-[450/530] transition-transform hover:scale-105 duration-300">
+              <img src="assets/polaroid-photo.svg" alt="Umeå Campus Sweden Polaroid" class="w-full h-full object-contain">
+            </div>
+          </div>
+
+          <div class="flex justify-between items-center pt-4 border-t-2 border-black font-mono text-[11px] text-gray-600">
+            <span>STATION: TRANSIT LOG</span>
+            <span class="font-bold text-black uppercase">SRM CHENNAI // UMEÅ SWEDEN</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       SECTION 03: PROJECTS — ENGINEERING STOPS (Expandable Card Deck)
+       ========================================================================= -->
+  <section id="projects" class="relative min-h-screen bg-blueprint-grid py-24 px-4 sm:px-8 lg:px-16 border-t-4 border-black">
+    <div class="max-w-7xl mx-auto">
+      
+      <!-- Section Header -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+        <div>
+          <div class="inline-block px-3 py-1 bg-accent-yellow text-black font-mono text-xs font-black tracking-widest border-2 border-black uppercase mb-3">
+            SECTION 03 // EXPANDING DECK
+          </div>
+          <h2 class="font-display text-4xl sm:text-6xl text-cream-paper uppercase tracking-tight">
+            ENGINEERING STOPS
+          </h2>
+        </div>
+        <div class="font-mono text-xs sm:text-sm text-periwinkle font-semibold max-w-md">
+          Four foundational projects treated as engineering stops. Click any card to expand in place, inspect verified metrics, and explore the architecture.
+        </div>
+      </div>
+
+      <!-- Expandable Cards Container (Generated/Wired in js) -->
+      <div id="projects-deck-container" class="space-y-6">
+        <!-- Rendered dynamically by main.js from CONTENT.projects -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       SECTION 04: BEST WORK — THE CHENNAI ➔ UMEÅ ROUTE (Horizontal Journey)
+       ========================================================================= -->
+  <section id="best-work" class="relative min-h-screen bg-[#060919] py-24 px-4 sm:px-8 lg:px-16 border-t-4 border-black overflow-hidden">
+    <!-- Subtle Background Glow -->
+    <div class="absolute top-1/4 left-1/3 w-[500px] h-[500px] bg-royal-blue/15 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto relative z-10">
+      
+      <!-- Section Header with LED Ticker -->
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-8 gap-6">
+        <div>
+          <div class="flex items-center gap-3 mb-3">
+            <span class="px-3 py-1 bg-royal-blue text-white font-mono text-xs font-black tracking-widest border-2 border-white uppercase">
+              SECTION 04 // THE ROUTE
+            </span>
+            <div id="station-led-ticker" class="ticker-badge animate-pulse">
+              ● STATION 01 / 05 // CHENNAI CENTRAL
+            </div>
+          </div>
+          <h2 class="font-display text-4xl sm:text-6xl lg:text-7xl text-cream-paper uppercase tracking-tight">
+            CHENNAI ➔ UMEÅ ROUTE
+          </h2>
+        </div>
+
+        <!-- Carousel Navigation Controls -->
+        <div class="flex items-center gap-3">
+          <button id="route-prev-btn" class="w-12 h-12 bg-cream-paper border-brutal shadow-brutal flex items-center justify-center font-mono font-black text-xl hover-press disabled:opacity-40" aria-label="Previous station" data-cursor="PREV">
+            ←
+          </button>
+          <button id="route-next-btn" class="w-12 h-12 bg-accent-yellow border-brutal shadow-brutal flex items-center justify-center font-mono font-black text-xl hover-press disabled:opacity-40" aria-label="Next station" data-cursor="NEXT">
+            →
+          </button>
+          <span class="hidden sm:inline font-mono text-xs text-periwinkle font-semibold ml-2">
+            (Use Arrow Keys or Swipe)
+          </span>
+        </div>
+      </div>
+
+      <!-- Connected Route Line with Station Waypoint Markers -->
+      <div class="relative my-8 px-4">
+        <!-- Background Track -->
+        <div class="route-track w-full rounded-full">
+          <!-- Progressive Fill Bar -->
+          <div id="route-progress-line" class="route-progress-fill rounded-full" style="width: 20%;"></div>
+        </div>
+
+        <!-- Waypoint Station Nodes along the route -->
+        <div id="route-waypoints" class="flex justify-between items-center -mt-3.5 relative z-10 px-2 sm:px-6">
+          <!-- Generated by main.js: 5 waypoint circles corresponding to stations -->
+        </div>
+      </div>
+
+      <!-- Horizontal Station Carousel Viewport -->
+      <div class="relative overflow-hidden mt-8">
+        <div id="route-carousel-track" class="flex transition-transform duration-500 ease-out">
+          <!-- Station Cards Rendered Dynamically from CONTENT.bestWork -->
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       DISSECTION OVERLAY (Full-Screen Deep-Dive Case Study on the same URL)
+       ========================================================================= -->
+  <div id="dissection-overlay" role="dialog" aria-modal="true" aria-label="Project Deep-Dive Dissection">
+    <div class="max-w-5xl mx-auto bg-cream-paper border-brutal shadow-brutal-xl rounded-md overflow-hidden relative my-6">
+      
+      <!-- Deep Dive Top Header Bar (Periwinkle & Brutalist) -->
+      <div class="bg-periwinkle border-b-brutal p-6 sm:p-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <div>
+          <div class="flex items-center gap-2 mb-2">
+            <span id="dissection-station-badge" class="px-2.5 py-1 bg-black text-accent-yellow font-mono text-xs font-black tracking-wider uppercase">
+              STATION 01 // DEEP DIVE
+            </span>
+            <span id="dissection-role-badge" class="font-mono text-xs font-extrabold text-black uppercase">
+              LEAD INVENTOR
+            </span>
+          </div>
+          <h2 id="dissection-title" class="font-display text-3xl sm:text-5xl text-black uppercase">
+            ALERT RIDE HELMET
+          </h2>
+          <p id="dissection-subtitle" class="font-mono text-xs sm:text-sm text-gray-800 font-bold mt-1">
+            PATENT-FILED SMART SAFETY HARNESS
+          </p>
+        </div>
+
+        <button id="close-dissection-btn" class="bg-black text-white px-5 py-2.5 border-2 border-black font-mono text-xs font-black tracking-wider uppercase hover:bg-accent-yellow hover:text-black transition-colors" data-cursor="CLOSE">
+          ← RETURN TO ROUTE [ESC]
+        </button>
+      </div>
+
+      <!-- Deep Dive Content Body -->
+      <div class="p-6 sm:p-10 space-y-8 bg-paper-grid">
+        
+        <!-- Tags Row -->
+        <div id="dissection-tags" class="flex flex-wrap gap-2">
+          <!-- Filled by js -->
+        </div>
+
+        <!-- Problem & Answer Blocks -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-white border-brutal p-6 shadow-brutal">
+            <div class="font-mono text-xs font-black text-accent-red uppercase tracking-wider mb-2">
+              THE REAL-WORLD PROBLEM
+            </div>
+            <p id="dissection-problem" class="font-sans text-sm text-gray-800 leading-relaxed font-medium">
+              <!-- Filled by js -->
+            </p>
+          </div>
+
+          <div class="bg-white border-brutal p-6 shadow-brutal">
+            <div class="font-mono text-xs font-black text-royal-blue uppercase tracking-wider mb-2">
+              MY ENGINEERING APPROACH &amp; CONTRIBUTION
+            </div>
+            <p id="dissection-answer" class="font-sans text-sm text-gray-800 leading-relaxed font-medium">
+              <!-- Filled by js -->
+            </p>
+          </div>
+        </div>
+
+        <!-- Architecture / Evidence Visual Block -->
+        <div>
+          <div class="font-mono text-xs font-black text-black uppercase tracking-wider mb-3">
+            TECHNICAL SCHEMATIC &amp; SYSTEM EVIDENCE
+          </div>
+          <div class="border-brutal bg-black rounded overflow-hidden shadow-brutal">
+            <img id="dissection-evidence-img" src="assets/alertride-preview.svg" alt="Architecture schematic" class="w-full max-h-96 object-contain p-4">
+          </div>
+        </div>
+
+        <!-- Verified Metrics & Code Snippet -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+          <!-- Metrics -->
+          <div class="lg:col-span-5 bg-accent-yellow border-brutal p-6 shadow-brutal">
+            <div class="font-mono text-xs font-black text-black uppercase tracking-wider mb-4 border-b-2 border-black pb-2">
+              VERIFIED FLIGHT STATS
+            </div>
+            <div id="dissection-stats" class="space-y-4">
+              <!-- Filled by js -->
+            </div>
+          </div>
+
+          <!-- Code Snippet -->
+          <div class="lg:col-span-7 code-window p-5">
+            <div class="flex items-center justify-between border-b border-slate-700 pb-2 mb-3 text-slate-400 text-xs">
+              <span>SYSTEM KERNEL DISPATCH</span>
+              <span>C++ / POSTGRES</span>
+            </div>
+            <pre><code id="dissection-code" class="text-xs text-cyan-300 overflow-x-auto block">
+              // Loading routine...
+            </code></pre>
+          </div>
+        </div>
+
+        <!-- Action Links: GitHub / Demo / Patent -->
+        <div class="pt-6 border-t-2 border-black flex flex-wrap items-center justify-between gap-4">
+          <div id="dissection-links" class="flex flex-wrap gap-3">
+            <!-- Filled by js -->
+          </div>
+
+          <button id="bottom-return-btn" class="bg-black text-accent-yellow px-6 py-3 border-brutal font-mono text-xs font-black uppercase tracking-wider hover:bg-white hover:text-black transition-colors" data-cursor="RETURN">
+            ← RETURN TO ROUTE
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       SECTION 05: VISUALS — SIGNALS FROM THE JOURNEY (Cursor-Following Gallery)
+       ========================================================================= -->
+  <section id="visuals" class="relative min-h-screen bg-black py-24 px-4 sm:px-8 lg:px-16 border-t-4 border-black flex flex-col justify-center">
+    <div class="max-w-7xl mx-auto w-full">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+        <div>
+          <div class="inline-block px-3 py-1 bg-royal-blue text-white font-mono text-xs font-black tracking-widest border-2 border-white uppercase mb-3">
+            SECTION 05 // RADAR SIGNALS
+          </div>
+          <h2 class="font-display text-4xl sm:text-6xl text-cream-paper uppercase tracking-tight">
+            SIGNALS FROM THE JOURNEY
+          </h2>
+        </div>
+        <div class="font-mono text-xs sm:text-sm text-slate-400 font-semibold max-w-md">
+          Hover over any discipline zone to tune the receiver. Posters and architecture signals track your focus.
+        </div>
+      </div>
+
+      <!-- Two-Column Layout: Left Hover Zone List, Right Dynamic Floating Poster Preview -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        
+        <!-- Left: 8 Skill Hover Zones -->
+        <div class="lg:col-span-7 space-y-2.5" id="visuals-zones-container">
+          <!-- Rendered dynamically from CONTENT.visuals -->
+        </div>
+
+        <!-- Right: Interactive Preview Canvas / Signal Monitor -->
+        <div class="lg:col-span-5 flex justify-center">
+          <div id="visuals-preview-card" class="relative w-full max-w-md aspect-[6/4] bg-[#060919] border-brutal-blue shadow-brutal-yellow rounded-lg overflow-hidden group">
+            <img id="visuals-active-img" src="assets/visual-aiml.svg" alt="Technical Signal Preview" class="w-full h-full object-cover transition-opacity duration-300">
+            <div class="absolute bottom-3 left-3 right-3 bg-black/90 border border-accent-yellow p-3 flex justify-between items-center">
+              <div>
+                <div id="visuals-active-code" class="font-mono text-[10px] font-bold text-accent-yellow">SIG-01 // RESEARCH LAB</div>
+                <div id="visuals-active-title" class="font-sans text-xs font-bold text-white">AI / MACHINE LEARNING</div>
+              </div>
+              <span class="w-2.5 h-2.5 bg-green-500 rounded-full animate-ping"></span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       SECTION 06: CONTACT — FINAL DESTINATION (Full-Screen Black Section)
+       ========================================================================= -->
+  <section id="contact" class="relative min-h-screen bg-[#000000] py-24 px-4 sm:px-8 lg:px-16 border-t-4 border-black flex flex-col justify-between">
+    <div class="max-w-7xl mx-auto w-full my-auto">
+      
+      <div class="inline-block px-3 py-1 bg-accent-yellow text-black font-mono text-xs font-black tracking-widest border-2 border-black uppercase mb-6">
+        SECTION 06 // TERMINUS
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        
+        <!-- Left Column: Big Overlapping Shouted Typography -->
+        <div class="lg:col-span-7">
+          <h2 class="font-handwriting text-6xl sm:text-8xl md:text-9xl text-cream-paper font-bold leading-none select-none">
+            Final Destination.
+          </h2>
+          <div class="font-display text-3xl sm:text-5xl text-accent-yellow uppercase tracking-tight mt-3">
+            REACH OUT &amp; CONNECT.
+          </div>
+
+          <p class="font-sans text-sm sm:text-base text-gray-300 max-w-xl leading-relaxed mt-6">
+            The journey from Chennai to Umeå continues. Whether you are exploring high-performance systems, collaborating on human-centered AI and robotics, or discussing opportunities, my inbox is open.
+          </p>
+
+          <div class="mt-8 flex items-center gap-3">
+            <span class="w-3 h-3 bg-green-400 rounded-full animate-pulse"></span>
+            <span class="font-mono text-xs text-periwinkle font-bold uppercase tracking-wider">
+              CURRENT LOCATION: UMEÅ UNIVERSITY, SWEDEN (LAT 63.8258° N)
+            </span>
+          </div>
+        </div>
+
+        <!-- Right Column: Big Handwritten Mailto Button & Social Links -->
+        <div class="lg:col-span-5 flex flex-col gap-5">
+          <!-- Primary Mailto Button -->
+          <a href="mailto:anandkushagra1@gmail.com?subject=Hello%20Kushagra%20%2F%2F%20Chennai%20%E2%9E%94%20Ume%C3%A5%20Connection&body=Hi%20Kushagra%2C%0A%0AI%20was%20exploring%20your%20portfolio%20and%20followed%20your%20journey%20from%20SRM%20Chennai%20to%20Ume%C3%A5.%20I'd%20love%20to%20chat%20about..." 
+             class="group block bg-accent-yellow p-6 sm:p-8 border-brutal shadow-brutal-xl hover-press text-center" data-cursor="MAIL">
+            <div class="font-mono text-xs font-black text-black uppercase tracking-wider mb-2">
+              ● PRE-FILLED DISPATCH LINK
+            </div>
+            <div class="font-handwriting text-4xl sm:text-5xl text-black font-bold group-hover:scale-105 transition-transform">
+              anandkushagra1@gmail.com
+            </div>
+            <div class="font-mono text-[11px] font-bold text-gray-800 mt-3">
+              CLICK TO OPEN MAILTO ➔
+            </div>
+          </a>
+
+          <!-- Social Links Grid -->
+          <div class="grid grid-cols-2 gap-3 font-mono text-xs font-black">
+            <a href="https://www.linkedin.com/in/kushagra-anand" target="_blank" rel="noopener noreferrer" class="bg-cream-paper p-3.5 border-brutal shadow-brutal hover-press text-center flex items-center justify-center gap-2 text-black" data-cursor="LINKEDIN">
+              <span>LINKEDIN ↗</span>
+            </a>
+            <a href="https://github.com/kushagra-anand" target="_blank" rel="noopener noreferrer" class="bg-cream-paper p-3.5 border-brutal shadow-brutal hover-press text-center flex items-center justify-center gap-2 text-black" data-cursor="GITHUB">
+              <span>GITHUB ↗</span>
+            </a>
+            <a href="https://instagram.com/kushagra_anand" target="_blank" rel="noopener noreferrer" class="bg-cream-paper p-3.5 border-brutal shadow-brutal hover-press text-center flex items-center justify-center gap-2 text-black" data-cursor="INSTAGRAM">
+              <span>INSTAGRAM ↗</span>
+            </a>
+            <a href="mailto:anandkushagra1@gmail.com" class="bg-royal-blue text-white p-3.5 border-brutal shadow-brutal hover-press text-center flex items-center justify-center gap-2" data-cursor="DIRECT">
+              <span>DIRECT MAIL ↗</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Contact Bottom Bar -->
+    <div class="max-w-7xl mx-auto w-full pt-8 border-t border-slate-800 text-center font-mono text-xs text-slate-500">
+      ROUTE TERMINUS REACHED // 6,700 KM LOGGED
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       SECTION 07: FOOTER (Cream Paper Aesthetic, Handwritten Signature, Legal)
+       ========================================================================= -->
+  <footer class="bg-cream-paper border-t-4 border-black py-12 px-4 sm:px-8 lg:px-16 text-black">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+      
+      <!-- Left: Signature & Journey Closing Note -->
+      <div class="text-center md:text-left">
+        <div class="font-handwriting text-5xl sm:text-6xl text-royal-blue font-bold">
+          Kushagra Anand
+        </div>
+        <p class="font-mono text-xs text-gray-700 font-bold mt-2">
+          CHENNAI (13.08° N) ➔ UMEÅ (63.82° N) // 6,700 KM OF SYSTEMS CRAFT.
+        </p>
+        <p class="font-sans text-xs text-gray-500 mt-1 max-w-md">
+          From the humid hackathons of SRM to the sub-zero robotics labs of northern Sweden, every project is built to endure.
+        </p>
+      </div>
+
+      <!-- Right: Copyright & Explicit Static Legal Links -->
+      <div class="flex flex-col items-center md:items-end gap-3">
+        <div class="flex items-center gap-4 font-mono text-xs font-black uppercase">
+          <a href="privacy.html" class="hover:text-royal-blue transition-colors underline decoration-2 underline-offset-4" data-cursor="LEGAL">
+            PRIVACY POLICY
+          </a>
+          <span>•</span>
+          <a href="terms.html" class="hover:text-royal-blue transition-colors underline decoration-2 underline-offset-4" data-cursor="LEGAL">
+            TERMS OF USE
+          </a>
+        </div>
+        <div class="font-mono text-[11px] text-gray-600">
+          © 2026 KUSHAGRA ANAND. ZERO TRACKING. 100% STATIC RUNTIME.
+        </div>
+        <div class="font-mono text-[10px] text-gray-400">
+          HOSTED ON CLOUDFLARE PAGES // FREE TIER
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Scripts: Content, Animations, and Main Engine -->
+  <script src="js/content.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
+

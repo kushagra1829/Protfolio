@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 700" width="100%" height="100%">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#0B24FF" stop-opacity="0.8"/>
+      <stop offset="50%" stop-color="#00008B" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#05081E" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#8A9BFF" stroke-width="0.75" stroke-opacity="0.25"/>
+    </pattern>
+    <filter id="shadow">
+      <feDropShadow dx="8" dy="8" stdDeviation="0" flood-color="#000000" flood-opacity="1"/>
+    </filter>
+  </defs>
+
+  <!-- Background Aura -->
+  <rect width="600" height="700" fill="url(#glow)"/>
+  <rect width="600" height="700" fill="url(#grid)"/>
+
+  <!-- Flight / Route Vector Line from Chennai to Umeå -->
+  <path d="M 120 620 Q 250 350 480 180" fill="none" stroke="#FFC800" stroke-width="3" stroke-dasharray="6 6"/>
+  <circle cx="120" cy="620" r="7" fill="#0B24FF" stroke="#FFC800" stroke-width="2"/>
+  <text x="135" y="625" fill="#F2EFE6" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="bold">CHENNAI 13.08°N</text>
+  
+  <circle cx="480" cy="180" r="7" fill="#FFC800" stroke="#0B24FF" stroke-width="2"/>
+  <text x="375" y="170" fill="#FFC800" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="bold">UMEÅ 63.82°N</text>
+
+  <!-- Stylized Developer Silhouette with Headset & Laptop -->
+  <g transform="translate(100, 160)">
+    <!-- Aura halo around head -->
+    <ellipse cx="200" cy="170" rx="130" ry="140" fill="#0B24FF" opacity="0.3"/>
+    
+    <!-- Shoulder & Torso Contour -->
+    <path d="M 50 450 C 70 330, 110 300, 150 280 C 160 250, 155 200, 160 170 C 165 110, 205 90, 250 90 C 295 90, 335 110, 340 170 C 345 200, 340 250, 350 280 C 390 300, 430 330, 450 450 Z" 
+          fill="#060919" stroke="#8A9BFF" stroke-width="3"/>
+    
+    <!-- Stylized Headphone / Tech Gear -->
+    <path d="M 155 180 C 145 130, 200 110, 250 110 C 300 110, 355 130, 345 180" fill="none" stroke="#FFC800" stroke-width="5" stroke-linecap="round"/>
+    <rect x="140" y="165" width="22" height="40" rx="6" fill="#FFC800"/>
+    <rect x="338" y="165" width="22" height="40" rx="6" fill="#FFC800"/>
+
+    <!-- Glasses Frame with Cyan Glow -->
+    <rect x="180" y="168" width="55" height="28" rx="4" fill="none" stroke="#F2EFE6" stroke-width="3"/>
+    <rect x="265" y="168" width="55" height="28" rx="4" fill="none" stroke="#F2EFE6" stroke-width="3"/>
+    <line x1="235" y1="180" x2="265" y2="180" stroke="#F2EFE6" stroke-width="3"/>
+
+    <!-- Hoodie collar & zipper detail -->
+    <path d="M 210 280 L 250 360 L 290 280" fill="none" stroke="#8A9BFF" stroke-width="2"/>
+    <line x1="250" y1="360" x2="250" y2="450" stroke="#FFC800" stroke-width="2" stroke-dasharray="4 4"/>
+  </g>
+
+  <!-- Brutalist Tag / Coordinate Stamp -->
+  <g transform="translate(60, 520)" filter="url(#shadow)">
+    <rect width="210" height="60" fill="#F2EFE6" stroke="#000" stroke-width="3" rx="4"/>
+    <text x="14" y="24" fill="#000" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="900">OPERATOR ID: KA-2026</text>
+    <text x="14" y="44" fill="#0B24FF" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="900">SRM IST ➔ UMEÅ UNIV</text>
+  </g>
+
+  <g transform="translate(350, 480)" filter="url(#shadow)">
+    <rect width="180" height="50" fill="#FFC800" stroke="#000" stroke-width="3" rx="4"/>
+    <text x="12" y="22" fill="#000" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="900">SYSTEMS &amp; ROBOTICS</text>
+    <text x="12" y="40" fill="#000" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700">STATUS: ACTIVE IN FLIGHT</text>
+  </g>
+</svg>
